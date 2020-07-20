@@ -1,6 +1,7 @@
-const {Client, MessageEmbed, message} = require('discord.js');
+const {Client, MessageEmbed, MessageAttachment} = require('discord.js');
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 const credenciales = require('./credenciales.json');
+const fs = require('fs');
 const client = new Client();
 let producto,precio;
 var guardarventa = new Array (producto,precio);
@@ -41,7 +42,7 @@ client.once('ready', () => {
 client.on('guildMemberAdd', member => {
     const channel = member.guild.channels.cache.find(ch => ch.name === 'nuevosmiembros');
     if (!channel) return;
-    channel.send(`Bienvenido! ${member} Soy el bot administrador del canal, si necesitas ayuda escribeme un mensaje privado con el comando /iniciar`);
+    channel.send(`Bienvenido! ${member} Soy el Bot administrador del canal, si necesitas ayuda escribeme un mensaje privado con el comando /iniciar`);
     console.log(channel);
 
 })
@@ -49,26 +50,30 @@ client.on('guildMemberAdd', member => {
 //Escucha nuevos mensajes de los ususarios
 client.on('message', async message => {
 
-    if(message.content ===  '/iniciar'){
-        message.channel.send(`Bienvenido, \n Tienes la siguiente lista de comandos disponibles: \n /direccion \n /garantia \n /ventas \n `);
-    }
     if(message.content ===  'Hola'){
-        message.channel.send(`Hola, ${message.author}! Que puedo hacer por ti?`);
+        message.channel.send(`Hola, ${message.author.first_name}! Que puedo hacer por ti?`);
     }
-    if(message.content ===  '/inicio'){
+    /*Envio de archivo en Buffer
+    if(message.content ===  'archivo'){
+        const buffer = fs.readFileSync('./Precios.pdf');
+        const attachment = new MessageAttachment(buffer, 'Precios.pdf');
+        message.channel.send(`${message.author}, Aqui está tu archivo`, attachment);
+    }*/
+    if(message.content ===  '/iniciar'){
         const embed = new MessageEmbed()
         .setTitle(`Bienvenido al menu principal`)
         .setColor(0xFF9900)
-        .setDescription(`${message.author}, Empecemos con la siguiente lista de comandos: \n /direccion \n /garantia \n /ventas \n /catalogows`)
+        .setDescription(`${message.author}, Empecemos con la siguiente lista de comandos: \n /direccion \n /garantia \n /ventas \n /catalogows \n /precios`)
         .setThumbnail('https://burstcomputers.files.wordpress.com/2020/07/1593734032249.png')
         message.channel.send(embed);
     }
     if(message.content ===  '/ventas'){
         const embed = new MessageEmbed()
         .setTitle('Registro de Ventas')
-        .setColor(0xFFD966)
+        .setColor(0x0B5394)
         .setDescription('toca para completar el proceso')
         .setURL('https://burstcomputers.typeform.com/to/j2Ue8Hn6')
+        .setThumbnail('https://burstcomputers.files.wordpress.com/2020/07/logo-dollar.png')
         message.channel.send(embed);
     }
     if(message.content ===  '/catalogows'){
@@ -78,6 +83,16 @@ client.on('message', async message => {
         .setDescription('Toca para ver los productos disponibles')
         .setThumbnail('https://burstcomputers.files.wordpress.com/2020/07/logo-whatsapp.png')
         .setURL('https://www.wa.me/c/584244156765')
+        message.channel.send(embed);
+    }
+    if(message.content ===  '/precios'){
+        const embed = new MessageEmbed()
+        .setTitle('Lista de Precios en PDF')
+        .setColor(0x00FFFF)
+        .setDescription('Prefieres tener el archivo contigo? Bájalo a tu dispositivo')
+        .setFooter('Precios siempre actualizados')
+        .setThumbnail('https://burstcomputers.files.wordpress.com/2020/07/icono-garantia-1.png')
+        .setURL('https://drive.google.com/file/d/1P6bSsrob-GyVH549SEPJTGZ3AKHIhnKU/view?usp=sharing')
         message.channel.send(embed);
     }
     else if(message.content === 'Como estás?'){
@@ -92,7 +107,7 @@ client.on('message', async message => {
     else if(message.content === 'Programador'){
         message.channel.send('Andrew Clark \n clark1621@gmail.com')
     }
-    //Sistema de Ventas EN DESARROLLO
+    /*Sistema de Ventas EN DESARROLLO
     if (message.content === '/nuevaventa'){
         message.channel.send('Genial! empecemos por el comienzo:');
         message.channel.send('Que producto vendiste? \n\n Puedes ingresar estas opciones: \n Latitude \n Optiplex')
@@ -113,6 +128,6 @@ client.on('message', async message => {
         console.log(precio);
 
         guardaregistros();
-    }
+    }*/
 }) 
 client.login('NzMwODMyMTA4NTk5MjQ2OTE5.XwdQyQ.trdRidejN9wIrO1WYvOLeV30VBo');
