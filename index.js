@@ -22,7 +22,6 @@ async function accederGoogleSheet(){
     return registros;
     
 }
-accederGoogleSheet();
 //Envia registros a google sheets
 async function guardaregistros(){
     const documento = new GoogleSpreadsheet(googleId);
