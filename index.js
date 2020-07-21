@@ -45,7 +45,7 @@ client.on('guildMemberAdd', member => {
     console.log(channel);
 
 })
-//Escucha nuevos mensajes de los ususarios
+//Escucha nuevos mensajes de los ususario.
 client.on('message', async message => {
 
     if(message.content ===  'Hola'){
