@@ -22,7 +22,7 @@ async function accederGoogleSheet(){
     return registros;
     
 }
-
+accederGoogleSheet();
 //Envia registros a google sheets
 async function guardaregistros(){
     const documento = new GoogleSpreadsheet(googleId);
@@ -34,7 +34,7 @@ async function guardaregistros(){
 
 //Programa el evento ready
 client.once('ready', () => {
-    console.log(`Logged in as: ${client.user.tag}!`);
+    console.log(`Logged in as: ${client.user.tag}`);
     client.user.setStatus("online");
     console.log(client.user.presence.status);
 });
@@ -46,26 +46,27 @@ client.on('guildMemberAdd', member => {
     console.log(channel);
 
 })
-
 //Escucha nuevos mensajes de los ususarios
 client.on('message', async message => {
 
     if(message.content ===  'Hola'){
         message.channel.send(`Hola, ${message.author.first_name}! Que puedo hacer por ti?`);
     }
-    /*Envio de archivo en Buffer
-    if(message.content ===  'archivo'){
-        const buffer = fs.readFileSync('./Precios.pdf');
-        const attachment = new MessageAttachment(buffer, 'Precios.pdf');
-        message.channel.send(`${message.author}, Aqui está tu archivo`, attachment);
-    }*/
+
     if(message.content ===  '/iniciar'){
         const embed = new MessageEmbed()
         .setTitle(`Bienvenido al menu principal`)
         .setColor(0xFF9900)
-        .setDescription(`${message.author}, Empecemos con la siguiente lista de comandos: \n /direccion \n /garantia \n /ventas \n /catalogows \n /precios`)
+        .setDescription(`${message.author}, Empecemos con la siguiente lista de comandos: \n /direccion \n /garantia \n /ventas \n /catalogows \n /precios \n /preciospdf`)
         .setThumbnail('https://burstcomputers.files.wordpress.com/2020/07/1593734032249.png')
         message.channel.send(embed);
+    }
+    //Envio de archivo en Buffer
+    if(message.content ===  '/preciospdf'){
+            message.channel.send('Enviando archivo');
+            const buffer = fs.readFileSync('./Precios.pdf');
+            const attachment = new MessageAttachment(buffer, 'Precios.pdf');
+            message.channel.send(`${message.author}, Aqui está tu archivo`, attachment);
     }
     if(message.content ===  '/ventas'){
         const embed = new MessageEmbed()
@@ -107,12 +108,33 @@ client.on('message', async message => {
     else if(message.content === 'Programador'){
         message.channel.send('Andrew Clark \n clark1621@gmail.com')
     }
-    /*Sistema de Ventas EN DESARROLLO
+
+    //Sistema de Ventas EN DESARROLLO
     if (message.content === '/nuevaventa'){
-        message.channel.send('Genial! empecemos por el comienzo:');
-        message.channel.send('Que producto vendiste? \n\n Puedes ingresar estas opciones: \n Latitude \n Optiplex')
+        message.channel.send('Genial! empecemos por el comienzo: \n PC \n Laptop');
+     }
+    else if(message.content === 'Pc'){
+            let categoria = message.content;
+            console.log(categoria);
+            message.channel.send('Bien, Pc será')    
     }
-    else if (message.content === 'Optiplex'){
+    //}
+    //else
+        
+        /*Probando con Switch Casos: Optiplex / Latitude / includes
+        switch(message.content){
+            case 'Optiplex':
+                message.channel.send('Bien, ahora dime, en que precio la vendiste?');
+                var producto = message.content;
+                console.log(producto);
+            break;
+            default:
+                message.channel.send('Default Test-WTF?'); 
+
+
+        }Fin del Switch
+/*
+    if (message.content === 'Optiplex'){
         message.channel.send('Bien, ahora dime, en que precio la vendiste?');
         var producto = message.content;
         console.log(producto);
@@ -128,6 +150,16 @@ client.on('message', async message => {
         console.log(precio);
 
         guardaregistros();
-    }*/
+    }
+*/
+//} fin if nuevaventa
 }) 
+
+/*function nuevaventa(){
+
+    const nuevo1 = message.channel.send('Genial! empecemos por el comienzo:');
+    message.channel.send('Que producto vendiste? \n\n Puedes ingresar estas opciones: \n Latitude \n Optiplex');
+       let producto = message.content;
+        return(nuevo1)
+}*/
 client.login('NzMwODMyMTA4NTk5MjQ2OTE5.XwdQyQ.trdRidejN9wIrO1WYvOLeV30VBo');
