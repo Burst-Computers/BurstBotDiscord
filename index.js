@@ -59,7 +59,7 @@ client.on('message', async message => {
         message.channel.send(embed);
     }
     if(message.content ===  'Hola'){
-        message.channel.send(`Hola, ${message.author.first_name}! Que puedo hacer por ti?`);
+        message.channel.send(`Hola, ${message.author}! Que puedo hacer por ti?`);
     }
     if(message.content ===  '/preciospdf'){
         message.channel.send('Enviando archivo');
