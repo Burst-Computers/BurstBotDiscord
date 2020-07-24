@@ -47,7 +47,15 @@ client.on('guildMemberAdd', member => {
 
 })
 //Escucha nuevos mensajes de los ususarios
-client.on('message', async message => {
+client.on('message', async message  => {
+
+    /*if (message.author.bot) return;
+    let prefix = '!'; // customized. you can change it whatever you want.
+    if (!message.content.startsWith(prefix)) return; // use this. so your bot will be only executed with prefix.
+    
+    let args = message.content.slice(prefix.length).trim().split(/ +/g);
+    let msg = message.content.toLowerCase();
+    let cmd = args.shift().toLowerCase();*/
 
     if(message.content ===  '/iniciar'){
         const embed = new MessageEmbed()
@@ -104,6 +112,19 @@ client.on('message', async message => {
         .setURL('https://goo.gl/maps/mcrmtYcz5tNH8qSF6')
         message.channel.send(embed);
     }
+
+    /*if (msg.startsWith(prefix + "prune") || msg.startsWith(prefix + "purge")) { // You can make an aliases. Just like that.
+        //if (!message.member.hasPermission("MANAGE_MESSAGES") || !message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("You don't have a permissions to do this.")
+        if (isNaN(args[0])) return message.channel.send("Please input a valid number.") // isNaN = is Not a Number. (case sensitive, write it right)
+        if (args[0] > 100) return message.channel.send("Insert the number less than 100.") // Discord limited purge number into 100.
+        if (args[0] < 2) return message.channel.send("Insert the number more than 1.")
+        
+        message.delete()
+        message.channel.bulkDelete(args[0])
+        .then(messages => message.channel.send(`Deleted ${messages.size}/${args[0]} messages.`)).then(d => d.delete({timeout: 10000})) // How long this message will be deleted (in ms)
+        .catch(() => message.channel.send("Something went wrong, while deleting messages.")) // This error will be displayed when the bot doesn't have an access to do it.
+      }*/
+
     else if(message.content === 'Como estás?'){
         message.channel.send('Genial!, mucho mejor ahora que preguntaste.');
     }
