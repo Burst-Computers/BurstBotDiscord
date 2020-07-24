@@ -33,7 +33,7 @@ async function guardaregistros(){
 }
 
 //Programa el evento ready
-client.once('ready', () => {
+client.on('ready', () => {
     console.log(`Logged in as: ${client.user.tag}!`);
     client.user.setStatus("online");
     console.log(client.user.presence.status);
