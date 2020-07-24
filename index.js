@@ -46,7 +46,6 @@ client.on('guildMemberAdd', member => {
     console.log(channel);
 
 })
-
 //Escucha nuevos mensajes de los ususarios
 client.on('message', async message => {
 
@@ -54,7 +53,7 @@ client.on('message', async message => {
         const embed = new MessageEmbed()
         .setTitle(`Bienvenido al menu principal`)
         .setColor(0xFF9900)
-        .setDescription(`${message.author}, Empecemos con la siguiente lista de comandos: \n /direccion \n /garantia \n /ventas \n /catalogows \n /precios`)
+        .setDescription(`${message.author}, Empecemos con la siguiente lista de comandos: \n /direccion \n /garantia \n /ventas \n /catalogows \n /precios \n /preciospdf`)
         .setThumbnail('https://burstcomputers.files.wordpress.com/2020/07/1593734032249.png')
         message.channel.send(embed);
     }
@@ -95,11 +94,18 @@ client.on('message', async message => {
         .setURL('https://drive.google.com/file/d/1P6bSsrob-GyVH549SEPJTGZ3AKHIhnKU/view?usp=sharing')
         message.channel.send(embed);
     }
+    if(message.content ===  '/direccion'){
+        const embed = new MessageEmbed()
+        .setTitle('Direccion de nuestra tienda')
+        .setColor('GREEN')
+        .setDescription('Estamos ubicados en el centro Profesional El Paraíso. \n Caracas, distrito Capital.')
+        .setFooter('Toca el enlace para ver la direccion en Google Maps')
+        .setThumbnail('https://burstcomputers.files.wordpress.com/2020/07/logo-nuevo-maps.png')
+        .setURL('https://goo.gl/maps/mcrmtYcz5tNH8qSF6')
+        message.channel.send(embed);
+    }
     else if(message.content === 'Como estás?'){
         message.channel.send('Genial!, mucho mejor ahora que preguntaste.');
-    }
-    else if( message.content === '/direccion'){
-        message.channel.send('Estamos ubicados en el centro Profesional El Paraíso. \n Caracas, distrito Capital.');
     }
     else if(message.content === '/garantia'){
         message.channel.send('Todos nuestros equipos tienen 90 dias de garantía directamente en nuestra tienda');
@@ -107,6 +113,18 @@ client.on('message', async message => {
     else if(message.content === 'Programador'){
         message.channel.send('Andrew Clark \n clark1621@gmail.com')
     }
+    else if(message.content === 'pajuo'){
+        message.delete()
+        .then(msg => console.log(`Deleted message from ${msg.author.username}`))
+        message.channel.send(`He borrado un mensaje de ${message.author.username} porque infringía las políticas de conducta`)
+        .catch(console.error);
+    }
+    else if(message.content === 'clear'){
+        channel.bulkDelete(5)
+        .then(messages => console.log(`Bulk deleted ${messages.size} messages`))
+        .catch(console.error);
+    }
+    
     /*Sistema de Ventas EN DESARROLLO
     if (message.content === '/nuevaventa'){
         message.channel.send('Genial! empecemos por el comienzo:');
