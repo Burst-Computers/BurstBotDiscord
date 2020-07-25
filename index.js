@@ -28,13 +28,11 @@ async function guardaregistros(){ //Envia registros a google sheets
     const sheet = documento.sheetsByIndex[2];
     await sheet.addRow(guardarventa,documento);
 }
-
 client.on('ready', () => { //Programa el evento ready
     console.log(`Logged in as: ${client.user.tag}!`);
     client.user.setStatus("online");
     console.log(client.user.presence.status);
 });
-
 client.on('guildMemberAdd', member => { //Saluda a los nuevos miembros del Servidor
     const channel = member.guild.channels.cache.find(ch => ch.name === 'nuevosmiembros');
     if (!channel) return;
