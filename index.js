@@ -118,4 +118,4 @@ client.on('message', async message  => { //Escucha nuevos mensajes de los ususar
         .catch(console.error);
     }
 }) 
-client.login(config.token);
+client.login(config.token); // Token de acceso a la app
