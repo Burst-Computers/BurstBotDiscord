@@ -3,15 +3,15 @@ const { GoogleSpreadsheet } = require('google-spreadsheet');
 const credenciales = require('./credenciales.json');
 const fs = require('fs');
 const client = new Client();
-let producto,precio;
-var guardarventa = new Array (producto,precio);
+require('dotenv').config();
 
-//ID de la hoja de calculo conectada al proyecto
-let googleId = "1K37Tb-IGcsD78F0FohlbBA7heqcaCCJa7cWGgyJp2AA";
+const config = { //Configura variables de entorno para proteger los datos de acceso a las apps
+    token: process.env.TOKEN, 
+    googleId: process.env.GOOGLE_ID, 
+};
 
-//Trae registros de google Sheets
-async function accederGoogleSheet(){
-    const documento = new GoogleSpreadsheet(googleId);
+async function accederGoogleSheet(){ //Trae registros de google Sheets
+    const documento = new GoogleSpreadsheet(config.googleId);
     await documento.useServiceAccountAuth(credenciales);
     await documento.loadInfo();
 
@@ -23,8 +23,7 @@ async function accederGoogleSheet(){
     
 }
 
-//Envia registros a google sheets
-async function guardaregistros(){
+async function guardaregistros(){ //Envia registros a google sheets
     const documento = new GoogleSpreadsheet(googleId);
     await documento.useServiceAccountAuth(credenciales);
     await documento.loadInfo();
@@ -32,30 +31,20 @@ async function guardaregistros(){
     await sheet.addRow(guardarventa,documento);
 }
 
-//Programa el evento ready
-client.on('ready', () => {
+client.on('ready', () => { //Programa el evento ready
     console.log(`Logged in as: ${client.user.tag}!`);
     client.user.setStatus("online");
     console.log(client.user.presence.status);
 });
-//Saluda a los nuevos miembros del Servidor
-client.on('guildMemberAdd', member => {
+
+client.on('guildMemberAdd', member => { //Saluda a los nuevos miembros del Servidor
     const channel = member.guild.channels.cache.find(ch => ch.name === 'nuevosmiembros');
     if (!channel) return;
     channel.send(`Bienvenido! ${member} Soy el Bot administrador del canal, si necesitas ayuda escribeme un mensaje privado con el comando /iniciar`);
     console.log(channel);
 
 })
-//Escucha nuevos mensajes de los ususarios
-client.on('message', async message  => {
-
-    /*if (message.author.bot) return;
-    let prefix = '!'; // customized. you can change it whatever you want.
-    if (!message.content.startsWith(prefix)) return; // use this. so your bot will be only executed with prefix.
-    
-    let args = message.content.slice(prefix.length).trim().split(/ +/g);
-    let msg = message.content.toLowerCase();
-    let cmd = args.shift().toLowerCase();*/
+client.on('message', async message  => { //Escucha nuevos mensajes de los ususarios
 
     if(message.content ===  '/iniciar'){
         const embed = new MessageEmbed()
@@ -112,19 +101,6 @@ client.on('message', async message  => {
         .setURL('https://goo.gl/maps/mcrmtYcz5tNH8qSF6')
         message.channel.send(embed);
     }
-
-    /*if (msg.startsWith(prefix + "prune") || msg.startsWith(prefix + "purge")) { // You can make an aliases. Just like that.
-        //if (!message.member.hasPermission("MANAGE_MESSAGES") || !message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("You don't have a permissions to do this.")
-        if (isNaN(args[0])) return message.channel.send("Please input a valid number.") // isNaN = is Not a Number. (case sensitive, write it right)
-        if (args[0] > 100) return message.channel.send("Insert the number less than 100.") // Discord limited purge number into 100.
-        if (args[0] < 2) return message.channel.send("Insert the number more than 1.")
-        
-        message.delete()
-        message.channel.bulkDelete(args[0])
-        .then(messages => message.channel.send(`Deleted ${messages.size}/${args[0]} messages.`)).then(d => d.delete({timeout: 10000})) // How long this message will be deleted (in ms)
-        .catch(() => message.channel.send("Something went wrong, while deleting messages.")) // This error will be displayed when the bot doesn't have an access to do it.
-      }*/
-
     else if(message.content === 'Como estás?'){
         message.channel.send('Genial!, mucho mejor ahora que preguntaste.');
     }
@@ -134,7 +110,7 @@ client.on('message', async message  => {
     else if(message.content === 'Programador'){
         message.channel.send('Andrew Clark \n clark1621@gmail.com')
     }
-    else if(message.content === 'pajuo'){
+    else if(message.content === 'insultos'){
         message.delete()
         .then(msg => console.log(`Deleted message from ${msg.author.username}`))
         message.channel.send(`He borrado un mensaje de ${message.author.username} porque infringía las políticas de conducta`)
@@ -145,28 +121,5 @@ client.on('message', async message  => {
         .then(messages => console.log(`Bulk deleted ${messages.size} messages`))
         .catch(console.error);
     }
-    
-    /*Sistema de Ventas EN DESARROLLO
-    if (message.content === '/nuevaventa'){
-        message.channel.send('Genial! empecemos por el comienzo:');
-        message.channel.send('Que producto vendiste? \n\n Puedes ingresar estas opciones: \n Latitude \n Optiplex')
-    }
-    else if (message.content === 'Optiplex'){
-        message.channel.send('Bien, ahora dime, en que precio la vendiste?');
-        var producto = message.content;
-        console.log(producto);
-    }
-    else if (message.content === 'Latitude'){
-        message.channel.send('Bien, ahora dime, en que precio la vendiste?');
-        var producto = message.content;
-        console.log(producto);
-    }
-    else if (message.content.includes('$')){
-        message.channel.send('Excelente! He guardado el registro.');
-        var precio = message.content;
-        console.log(precio);
-
-        guardaregistros();
-    }*/
 }) 
-client.login('NzMwODMyMTA4NTk5MjQ2OTE5.XwdQyQ.trdRidejN9wIrO1WYvOLeV30VBo');
+client.login(config.token);
