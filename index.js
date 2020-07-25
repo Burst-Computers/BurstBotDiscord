@@ -9,7 +9,6 @@ const config = { //Configura variables de entorno para proteger los datos de acc
     token: process.env.TOKEN, 
     googleId: process.env.GOOGLE_ID, 
 };
-
 async function accederGoogleSheet(){ //Trae registros de google Sheets
     const documento = new GoogleSpreadsheet(config.googleId);
     await documento.useServiceAccountAuth(credenciales);
