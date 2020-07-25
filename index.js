@@ -22,7 +22,6 @@ async function accederGoogleSheet(){ //Trae registros de google Sheets
     return registros;
     
 }
-
 async function guardaregistros(){ //Envia registros a google sheets
     const documento = new GoogleSpreadsheet(googleId);
     await documento.useServiceAccountAuth(credenciales);
