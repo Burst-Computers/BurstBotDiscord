@@ -40,7 +40,7 @@ _Menciona las herramientas que utilizaste para crear tu proyecto_
 ### Deployment 📦
 
 ```
--Cuenta verificada en [Heroku.com](www.heroku.com)
+-Cuenta verificada en Heroku
 ```
 
 
