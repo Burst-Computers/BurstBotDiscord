@@ -37,6 +37,13 @@ _Menciona las herramientas que utilizaste para crear tu proyecto_
 * [IFTTT](https://ifttt.com/) - Servicio de conexión de apps a través de webhooks
 
 
+### Deployment 📦
+
+```
+-Cuenta verificada en [Heroku](www.heroku.com)
+```
+
+
 ## Versionado 📌
 
 Usamos [GitHub](https://github.com/) para el versionado y [Heroku](https://www.heroku.com/) para el deployment de la aplicación.
