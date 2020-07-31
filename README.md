@@ -3,7 +3,7 @@ Repositorio para nuestro bot en el servidor oficial de Discord.
 
 ## Comenzando 🚀
 
-_Enlace directo al_ [Servidor](https://www.discord.gg/bg2dcyk)
+_Enlace directo al_ [Servidor](https://discord.gg/TXDrcTw)
 
 
 ### ¿Que hace el bot? 📋
