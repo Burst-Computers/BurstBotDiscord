@@ -36,8 +36,6 @@ Una vez dentro del servidor, dirigirse a los mensajes privados y empezar la comu
 
 ## Construido con 🛠️
 
-_Menciona las herramientas que utilizaste para crear tu proyecto_
-
 * [Node.JS](https://nodejs.org/en/) - Entorno que ejecuta codigo _server-side_ Javascript.
 * [Discord.JS](https://discord.js.org/#/) - Módulo de Node que facilita la interacción con la API de Discord a través de un ambiente de programación orientado a objetos 
 * [IFTTT](https://ifttt.com/) - Servicio de conexión de apps a través de webhooks
@@ -57,4 +55,4 @@ Usamos [GitHub](https://github.com/) para el versionado y [Heroku](https://www.h
 ## Autores ✒️
 
 
-* **Andrew Clark** - desarrollo oficial para  *Burst Computers* 
+[Andrew Clark](https://github.com/andrewxxclark) y [Hector Cese](https://github.com/HackThorD) - desarrollo oficial para  *Burst Computers* 
