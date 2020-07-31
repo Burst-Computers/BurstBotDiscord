@@ -10,8 +10,14 @@ _Enlace directo al_ [Servidor](https://discord.gg/TXDrcTw)
 Las principales funcionalidades son:
 
 ```
--Saludo a nuevos miembros del servidor
--Respuesta de comandos
+-Contar la cantidad de usuarios en el servidor
+-Saludar a nuevos miembros del servidor
+-Respuesta de comandos:
+  *Texto
+  *Imagenes
+  *Embeds
+  *Archivos en Buffer
+  *Links
 -Moderación del servidor: 
   Si los usuarios inclumplen las normas y políticas establecidas el bot puede:
   advertir sobre incumplimiento de normas
