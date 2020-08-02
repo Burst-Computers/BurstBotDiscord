@@ -9,23 +9,21 @@ _Enlace directo al_ [Servidor](https://discord.gg/TXDrcTw)
 ### ¿Que hace el bot? 📋
 Las principales funcionalidades son:
 
-```
--Contar la cantidad de usuarios en el servidor
--Saludar a nuevos miembros del servidor
--Respuesta de comandos:
-  *Texto
-  *Imagenes
-  *Embeds
-  *Archivos en Buffer
-  *Links
--Moderación del servidor: 
-  Si los usuarios inclumplen las normas y políticas establecidas el bot puede:
-  advertir sobre incumplimiento de normas
-  Eliminar mensajes 
-  Elimina usuarios
-- Integrarse con redes sociales a través de webhooks
+* Contar la cantidad de usuarios en el servidor
+* Saludar a nuevos miembros del servidor
+* Respuesta de comandos en formatos:
+    * Texto
+    * Imagenes
+    * Embeds
+    * Archivos en Buffer
+    * Links
+* Moderación del servidor:
+  * Si los usuarios inclumplen las normas y políticas establecidas el bot puede:
+    * Advertir sobre incumplimiento de normas
+    * Eliminar mensajes 
+    * Eliminar usuarios
+* Integrarse con redes sociales a través de webhooks
 
-```
 
 ### Comunicarse con el bot 
 Una vez dentro del servidor, dirigirse a los mensajes privados y empezar la comunicación ingresando:
