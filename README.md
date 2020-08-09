@@ -1,4 +1,4 @@
-# BurstBotDiscord
+# BurstBot Discord
 Repositorio para nuestro bot en el servidor oficial de Discord.
 
 ## Comenzando 🚀
