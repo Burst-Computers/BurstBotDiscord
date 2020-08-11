@@ -26,11 +26,22 @@ Las principales funcionalidades son:
 
 
 ### Comunicarse con el bot 
-Una vez dentro del servidor, dirigirse a los mensajes privados y empezar la comunicación ingresando:
+ 
+Una vez dentro del servidor, se debe ubicar el bot entre la lista de usuarios conectados, el cuál tiene el siguiente perfil:
+
+![](src/bot_profile.jpg)
+
+
+Una vez ubicado, se debe entrar a la mensajería privada y enviar el comando:
 
 ```
 /iniciar
 ```
+
+eso empezará la interacción con el bot:
+
+![](src/bot_command.jpg)
+
 
 ## Construido con 🛠️
 
@@ -41,14 +52,13 @@ Una vez dentro del servidor, dirigirse a los mensajes privados y empezar la comu
 
 ### Deployment 📦
 
-```
--Cuenta verificada en Heroku
-```
+* Cuenta verificada en Heroku
 
 
 ## Versionado 📌
 
-Usamos [GitHub](https://github.com/) para el versionado y [Heroku](https://www.heroku.com/) para el deployment de la aplicación.
+[GitHub](https://github.com/) para el versionado.
+[Heroku](https://www.heroku.com/) para el deployment de la aplicación.
 
 ## Autores ✒️
 

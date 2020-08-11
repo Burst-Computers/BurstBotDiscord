@@ -1,7 +1,7 @@
 const {Client, MessageEmbed, MessageAttachment, Channel} = require('discord.js');
 const { GoogleSpreadsheet } = require('google-spreadsheet'); //Importa los metodos requeridos para trabajar con google spreasheets
 const credenciales = require('./credenciales.json'); //Credenciales de acceso a Google
-const fs = require('fs'); // Necesario para la carga y envio de archivos en buffer
+const fs = require('fs'); 
 const client = new Client(); 
 const config = require('./config.json') // Requiere el archivo config de comandos
 const command = require('./command') //Requiere al archivo command para ejecucion de comandos
@@ -10,7 +10,7 @@ const memberCount = require('./member-count') // requiere el archivo que cuenta 
 require('dotenv').config(); //Requiere la libreria para la creación de variables de entorno 
 
 
-const envconfig = { //Configura variables de entorno para proteger los datos de acceso a las apps
+const envconfig = { 
     token: process.env.TOKEN, 
     googleId: process.env.GOOGLE_ID, 
 };
